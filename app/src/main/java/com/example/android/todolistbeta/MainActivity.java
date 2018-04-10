@@ -40,10 +40,22 @@ public class MainActivity extends AppCompatActivity {
 
         prepareCourseList();
 
+
+
+        button = findViewById(R.id.floating_button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,CourseMake.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
-    
+
 
     private void prepareCourseList() {
         Course course1 = new Course("CMSC131", "Number of tasks: 3");
