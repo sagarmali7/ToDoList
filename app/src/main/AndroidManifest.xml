@@ -17,13 +17,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".MakeClass"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
-
-
     </application>
 
 </manifest>
