@@ -1,9 +1,13 @@
 package com.example.android.todolistbeta;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Course> courseList = new ArrayList<>();
     private RecyclerView recyclerView;
     private CourseAdapter mCourseAdapter;
-
+    private FloatingActionButton button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +37,21 @@ public class MainActivity extends AppCompatActivity {
         //This provides the child view for each section in the recycler view
         recyclerView.setAdapter(mCourseAdapter);
 
+
         prepareCourseList();
+
+
+
+
+        button = findViewById(R.id.floating_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,MakeClass.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
