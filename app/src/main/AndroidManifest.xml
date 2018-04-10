@@ -18,7 +18,8 @@
         </activity>
 
         <activity
-            android:name=".MakeClass">
+            android:name=".MakeClass"
+            android:parentActivityName=".MainActivity">
 
         </activity>
 
