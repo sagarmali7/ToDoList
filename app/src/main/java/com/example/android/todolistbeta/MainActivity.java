@@ -18,12 +18,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //References the recycler view
         recyclerView = findViewById(R.id.recycler_view_main);
 
+        //Sets up the adapter with the array list that will hold the courses
         mCourseAdapter = new CourseAdapter(courseList);
 
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+
+        //Sets up the layout manager
         recyclerView.setLayoutManager(layoutManager);
+
+        //This provides the child view for each section in the recycler view
         recyclerView.setAdapter(mCourseAdapter);
 
         prepareCourseList();
