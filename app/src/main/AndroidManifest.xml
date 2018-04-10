@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CourseMake">
+        <activity android:name=".CourseMake"
+            android:parentActivityName=".MainActivity">
 
         </activity>
     </application>
