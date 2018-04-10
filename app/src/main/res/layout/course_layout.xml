@@ -6,16 +6,29 @@
     android:clickable="true"
     android:orientation="vertical">
 
-
     <TextView
-        android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="24sp"
         android:id="@+id/course_name" />
 
     <TextView
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:layout_toRightOf="@id/course_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="16sp"
+        android:layout_marginTop="2dp"
+        android:layout_below="@id/course_name"
         android:id="@+id/course_number"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/course_number"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray"/>
 
 </RelativeLayout>
