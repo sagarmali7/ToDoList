@@ -19,6 +19,7 @@ public class CourseMake extends AppCompatActivity {
         setContentView(R.layout.course_maker);
 
 
+
     }
 
 
