@@ -15,6 +15,21 @@
         android:src = "@mipmap/ic_check_circle_white_24dp"
         android:tint="@color/colorWhile"
         android:id="@+id/float_button"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:focusable="false"/> <!-- Need this in order for calendar not to mess up -->
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/calendar"
+        android:src = "@mipmap/ic_today_white_24dp"
         android:backgroundTint="@color/colorPrimaryDark"/>
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/data_saver"
+        />
 
 </RelativeLayout>
