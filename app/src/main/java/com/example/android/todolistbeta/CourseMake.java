@@ -39,6 +39,7 @@ public class CourseMake extends AppCompatActivity {
         //Sets the calendar to the current year, month and day of the month
         //When selected. The fields are pre-selected.
         //They always stay the same, no matter
+        //The listener used to indicate the user has finished selecting a date.
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener(){
             @Override
             public void onDateSet(DatePicker view,int year, int monthOfYear,int dayOfMonth){
@@ -62,11 +63,19 @@ public class CourseMake extends AppCompatActivity {
             }
         });
 
+        currDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(CourseMake.this,date,myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
     }
 
     //This gives you the correct format you want
     //SimpleDateFormat is the thing that affects what is displayed
+    //MyCalendar fields are always set behind the scenes
     private void updatelabel(){
         String myFormat = "EE, MMM dd, yyyy"; // Gives you the format you want for date
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat,Locale.US);
