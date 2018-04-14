@@ -1,18 +1,14 @@
 package com.example.android.todolistbeta;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -32,6 +28,8 @@ public class CourseMake extends AppCompatActivity {
     FloatingActionButton addButton;
     EditText task;
     TextView taskToBeDone;
+
+    FloatingActionButton addTime;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +45,7 @@ public class CourseMake extends AppCompatActivity {
         addButton = findViewById(R.id.add_course);
         task = findViewById(R.id.Task_done);
         taskToBeDone= findViewById(R.id.task_to_be_done);
+        addTime = findViewById(R.id.time);
 
         courseName = findViewById(R.id.course_name);
 
@@ -118,8 +117,11 @@ public class CourseMake extends AppCompatActivity {
                 finish();
             }
         });
-    }
+ {
 
+        }
+
+    }
 
 
 

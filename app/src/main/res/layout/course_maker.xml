@@ -85,7 +85,8 @@
         android:layout_marginBottom="220dp"
         android:hint="@string/task_need"
         android:id="@+id/Task_done"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:focusable="true"/>
 
 
     <EditText
@@ -101,6 +102,10 @@
         android:visibility="invisible"/>
     <!-- Makes the keyboard not come up-->
         <!--Hides the cursor for being visible-->
+
+
+
+
 
 
 
