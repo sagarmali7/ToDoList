@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ToDoListBeta</string>
+    <string name = "due_date"> Due Date </string>
 </resources>

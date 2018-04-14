@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
@@ -23,7 +24,7 @@ public class CourseMake extends AppCompatActivity {
     FloatingActionButton caldendarButton;
     final Calendar myCalendar = Calendar.getInstance();
     EditText currDate;
-    int day;
+    EditText courseName;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,7 @@ public class CourseMake extends AppCompatActivity {
         // myCalendar  = Calendar.getInstance(); // Returns calendar fields that have been
         //Initialized with the current date and time
 
+        courseName = findViewById(R.id.course_name);
 
 
         //Sets the calendar to the current year, month and day of the month
@@ -55,6 +57,7 @@ public class CourseMake extends AppCompatActivity {
 
         //Once the button is clicked, shows a "dialog" box of the calendar with the
         //current YEAR, MONTH, DAY OF THE MONTH
+        //When this comes up, calls the date method
         caldendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +73,7 @@ public class CourseMake extends AppCompatActivity {
                         myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
 
     }
 
