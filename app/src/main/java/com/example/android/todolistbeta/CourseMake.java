@@ -1,5 +1,6 @@
 package com.example.android.todolistbeta;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,8 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,6 +28,10 @@ public class CourseMake extends AppCompatActivity {
     final Calendar myCalendar = Calendar.getInstance();
     EditText currDate;
     EditText courseName;
+    CheckBox checkBox;
+    FloatingActionButton addButton;
+    EditText task;
+    TextView taskToBeDone;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +41,12 @@ public class CourseMake extends AppCompatActivity {
         caldendarButton = findViewById(R.id.calendar);
         // myCalendar  = Calendar.getInstance(); // Returns calendar fields that have been
         //Initialized with the current date and time
+
+
+        checkBox = findViewById(R.id.check_box);
+        addButton = findViewById(R.id.add_course);
+        task = findViewById(R.id.Task_done);
+        taskToBeDone= findViewById(R.id.task_to_be_done);
 
         courseName = findViewById(R.id.course_name);
 
@@ -75,7 +88,42 @@ public class CourseMake extends AppCompatActivity {
         });
 
 
+
+
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!checkBox.isChecked()){
+                    caldendarButton.setVisibility(View.INVISIBLE);
+                    currDate.setVisibility(View.INVISIBLE);
+                    task.setVisibility(View.INVISIBLE);
+                    taskToBeDone.setVisibility(View.INVISIBLE);
+
+                }
+                else {
+                    caldendarButton.setVisibility(View.VISIBLE);
+                    currDate.setVisibility(View.VISIBLE);
+                    task.setVisibility(View.VISIBLE);
+                    taskToBeDone.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+
+
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
+
+
+
+
+
 
     //This gives you the correct format you want
     //SimpleDateFormat is the thing that affects what is displayed

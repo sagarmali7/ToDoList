@@ -14,16 +14,17 @@
         android:layout_marginBottom="16dp"
         android:src = "@mipmap/ic_check_circle_white_24dp"
         android:tint="@color/colorWhile"
-        android:id="@+id/float_button"
+        android:id="@+id/add_course"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:focusable="false"/> <!-- Need this in order for calendar not to mess up -->
+        android:focusable="false"
+        /> <!-- Need this in order for calendar not to mess up -->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/data_saver"
-        android:layout_toStartOf="@+id/float_button"
+        android:layout_toStartOf="@+id/add_course"
         android:backgroundTint="@color/colorPrimaryDark"
         android:src="@mipmap/ic_today_white_24dp" />
 
@@ -39,9 +40,50 @@
         />
 
     <CheckBox
+        android:id="@+id/check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/task_prompt"
+        android:focusable="false"
+        android:padding="10dp" />
+
+
+
+    <TextView
+        android:id="@+id/task_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/calendar"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="58dp"
+        android:padding="10dp"
+        android:text="@string/task_check" />
+
+
+    <TextView
+        android:id="@+id/task_to_be_done"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:layout_above="@id/Task_done"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="-1dp"
+        android:layout_marginTop="194dp"
+        android:padding="10dp"
+        android:text="@string/task_ask"
+
+        />
+
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="220dp"
+        android:hint="@string/task_need"
+        android:id="@+id/Task_done" />
 
 
     <EditText
@@ -50,12 +92,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="129dp"
+        android:layout_marginTop="137dp"
         android:cursorVisible="false"
         android:focusable="false"
-        android:hint="Date not set"
-
-        />
+        android:hint="Date not set" />
     <!-- Makes the keyboard not come up-->
         <!--Hides the cursor for being visible-->
 

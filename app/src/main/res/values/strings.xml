@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ToDoListBeta</string>
     <string name = "due_date"> Due Date </string>
+    <string name = "task_check">Do you want to add a task? </string>
+    <string name = "task_ask">Task to be done? </string>
+    <string name = "task_need">Task?</string>
 </resources>
