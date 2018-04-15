@@ -1,14 +1,20 @@
 package com.example.android.todolistbeta;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -29,11 +35,19 @@ public class CourseMake extends AppCompatActivity {
     EditText task;
     TextView taskToBeDone;
 
+    static EditText timeEdit;
+
+    TimePickerFragment timePick;
+
     FloatingActionButton addTime;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.course_maker);
+
+
+        timePick =  new TimePickerFragment();
 
         currDate = findViewById(R.id.data_saver);
         caldendarButton = findViewById(R.id.calendar);
@@ -44,8 +58,9 @@ public class CourseMake extends AppCompatActivity {
         checkBox = findViewById(R.id.check_box);
         addButton = findViewById(R.id.add_course);
         task = findViewById(R.id.Task_done);
-        taskToBeDone= findViewById(R.id.task_to_be_done);
+        taskToBeDone = findViewById(R.id.task_to_be_done);
         addTime = findViewById(R.id.time);
+        timeEdit = findViewById(R.id.time_edit);
 
         courseName = findViewById(R.id.course_name);
 
@@ -54,17 +69,16 @@ public class CourseMake extends AppCompatActivity {
         //When selected. The fields are pre-selected.
         //They always stay the same, no matter
         //The listener used to indicate the user has finished selecting a date.
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener(){
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker view,int year, int monthOfYear,int dayOfMonth){
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH,monthOfYear);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
                 updatelabel(); //Puts date on text view
             }
         };
-
 
 
         //Once the button is clicked, shows a "dialog" box of the calendar with the
@@ -73,42 +87,46 @@ public class CourseMake extends AppCompatActivity {
         caldendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(CourseMake.this,date,myCalendar.get(Calendar.YEAR),
-                        myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(CourseMake.this, date, myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
         currDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(CourseMake.this,date,myCalendar.get(Calendar.YEAR),
-                        myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(CourseMake.this, date, myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
 
-
+        //If check box is clicked, will display the
+        //The task information
 
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!checkBox.isChecked()){
+                if (!checkBox.isChecked()) {
                     caldendarButton.setVisibility(View.INVISIBLE);
                     currDate.setVisibility(View.INVISIBLE);
                     task.setVisibility(View.INVISIBLE);
                     taskToBeDone.setVisibility(View.INVISIBLE);
+                    addButton.setVisibility(View.INVISIBLE);
+                    addTime.setVisibility(View.INVISIBLE);
+                    timeEdit.setVisibility(View.INVISIBLE);
 
-                }
-                else {
+                } else {
                     caldendarButton.setVisibility(View.VISIBLE);
                     currDate.setVisibility(View.VISIBLE);
                     task.setVisibility(View.VISIBLE);
                     taskToBeDone.setVisibility(View.VISIBLE);
+                    addButton.setVisibility(View.VISIBLE);
+                    addTime.setVisibility(View.VISIBLE);
+                    timeEdit.setVisibility(View.VISIBLE);
                 }
             }
         });
-
-
 
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -117,16 +135,73 @@ public class CourseMake extends AppCompatActivity {
                 finish();
             }
         });
- {
 
-        }
 
+        addTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonClicked(v);
+            }
+        });
+
+
+        timeEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonClicked(v);
+            }
+        });
     }
 
 
 
 
+    /*
+    *Class that allows you to put a clock onto the app
+    *
+    *
+    *
+    *
+     */
 
+    public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstance){
+            final Calendar c = Calendar.getInstance(); //Need to get current time and hour
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+
+            //Displays the clock  when someone picks the time
+            return new TimePickerDialog(getActivity(),this,hour, minute,
+                    DateFormat.is24HourFormat(getActivity()));
+        }
+
+
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute){
+            String time = hourOfDay + ":" + minute;
+            if(hourOfDay < 12){
+                time = time + " AM";
+            }
+            else{
+                time = time + " PM";
+            }
+            timeEdit.setText(time);
+
+        }
+
+
+
+    }
+
+
+
+    //When picked, the clock is shown onto the screen
+    public void onButtonClicked(View v){
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getFragmentManager(),"TimePicker");
+    }
     //This gives you the correct format you want
     //SimpleDateFormat is the thing that affects what is displayed
     //MyCalendar fields are always set behind the scenes
