@@ -3,66 +3,73 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="8dp">
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:src = "@mipmap/ic_check_circle_white_24dp"
         android:tint="@color/colorWhile"
         android:id="@+id/add_course"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:focusable="false"
-        /> <!-- Need this in order for calendar not to mess up -->
+        android:focusable="false" />
 
-    <android.support.design.widget.FloatingActionButton
+    <!-- Need this in order for calendar not to mess up -->
+    <!--<android.support.design.widget.FloatingActionButton
         android:id="@+id/calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/data_saver"
+        android:layout_alignBottom="@+id/date_saver"
         android:layout_toStartOf="@+id/add_course"
         android:backgroundTint="@color/colorPrimaryDark"
         android:src="@mipmap/ic_today_white_24dp"
-        android:visibility="invisible"/>
-
+        android:visibility="invisible"/>-->
 
     <EditText
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
         android:hint="Course Name"
         android:id="@+id/course_name"
         android:inputType="textCapCharacters"
         android:imeOptions = "actionDone"
-        android:cursorVisible="false"
-        />
-
-    <CheckBox
-        android:id="@+id/check_box"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/task_prompt"
-        android:focusable="false"
-        android:padding="10dp" />
-
-
+        android:cursorVisible="false" />
 
     <TextView
         android:id="@+id/task_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="58dp"
-        android:padding="10dp"
+        android:layout_below="@+id/course_name"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="20sp"
         android:text="@string/task_check" />
 
+    <CheckBox
+        android:id="@+id/check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/task_prompt"
+        android:focusable="false" />
 
-    <TextView
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="24sp"
+        android:hint="@string/task_need"
+        android:id="@+id/Task_done"
+        android:layout_below="@id/check_box"
+        android:imeOptions="actionDone"
+        android:cursorVisible="false"
+        android:visibility="invisible" />
+
+    <!--<TextView
         android:id="@+id/task_to_be_done"
         android:layout_width="wrap_content"
         android:layout_height="53dp"
@@ -74,41 +81,37 @@
         android:padding="10dp"
         android:text="@string/task_ask"
         android:visibility="invisible"
-        />
-
-
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="220dp"
-        android:hint="@string/task_need"
-        android:id="@+id/Task_done"
-        android:visibility="invisible"
-        android:imeOptions="actionDone"
-        android:cursorVisible="false"
-        android:singleLine="true"
-        />
-
+        />-->
 
     <EditText
-        android:id="@+id/data_saver"
-        android:layout_width="250dp"
+        android:id="@+id/date_saver"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="137dp"
+        android:textSize="24sp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/Task_done"
         android:cursorVisible="false"
         android:focusable="false"
-        android:hint="Date not set"
-        android:visibility="invisible"
+        android:hint="Date due"
+        android:visibility="invisible" />
 
-        />
-    <!-- Makes the keyboard not come up-->
+    <EditText
+        android:id="@+id/time_edit"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@+id/date_saver"
+        android:layout_marginTop="8dp"
+        android:hint="Time due"
+        android:focusable="false"
+        android:onClick="onButtonClicked"
+        android:visibility="invisible" />
+
+
+<!-- Makes the keyboard not come up-->
         <!--Hides the cursor for being visible-->
 
-    <android.support.design.widget.FloatingActionButton
+    <!--<android.support.design.widget.FloatingActionButton
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -117,22 +120,6 @@
         android:layout_toEndOf="@+id/task_to_be_done"
         android:onClick="onButtonClicked"
         android:src="@mipmap/ic_alarm_black_24dp"
-        android:visibility="invisible"/>
-
-    <EditText
-        android:id="@+id/time_edit"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/Task_done"
-        android:layout_marginTop="-220dp"
-        android:focusable="false"
-        android:onClick="onButtonClicked"
-        android:visibility="invisible"
-         />
-
-
-
-
+        android:visibility="invisible"/>-->
 
 </RelativeLayout>

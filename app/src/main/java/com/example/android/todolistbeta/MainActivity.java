@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         //Sets up the adapter with the array list that will hold the courses
         mCourseAdapter = new CourseAdapter(courseList);
 
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
 
         //Sets up the layout manager
@@ -37,10 +36,7 @@ public class MainActivity extends AppCompatActivity {
         //This provides the child view for each section in the recycler view
         recyclerView.setAdapter(mCourseAdapter);
 
-
         prepareCourseList();
-
-
 
         button = findViewById(R.id.floating_button);
 
@@ -54,33 +50,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
-
     private void prepareCourseList() {
         Course course1 = new Course("CMSC131", "Number of tasks: 3");
         courseList.add(course1);
 
-        Course course2 = new Course("CMSC132", "Number of tasks: 5");
+        Course course2 = new Course("CMSC131", "Number of tasks: 3");
         courseList.add(course2);
 
-        Course course3 = new Course("ENEE205", "Number of tasks: 2");
+        Course course3 = new Course("CMSC131", "Number of tasks: 3");
         courseList.add(course3);
-
-        Course course4 = new Course("ENEE222", "Number of tasks: 1");
-        courseList.add(course4);
-
-        Course course5 = new Course("ENEE322", "Number of tasks: 10");
-        courseList.add(course5);
-
-        Course course6 = new Course("ENEE303", "Number of tasks: 0");
-        courseList.add(course6);
-
-        Course course7 = new Course("ENEE307", "Number of tasks: 6");
-        courseList.add(course7);
-
-        Course course8 = new Course("MATH241", "Number of tasks: 0");
-        courseList.add(course8);
 
         mCourseAdapter.notifyDataSetChanged();
     }

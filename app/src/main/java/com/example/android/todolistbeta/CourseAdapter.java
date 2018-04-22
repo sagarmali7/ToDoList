@@ -13,27 +13,22 @@ import java.util.List;
  */
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHolder> {
-    private List<Course> courses;
+        private List<Course> courses;
 
-    //Inner class that extends the ViewHolder class
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView coursename, coursenumber;
+        //Inner class that extends the ViewHolder class
+        public class MyViewHolder extends RecyclerView.ViewHolder {
+            public TextView coursename, coursenumber;
 
-
-        public MyViewHolder(View v) {
-            super(v);
-            coursename = v.findViewById(R.id.course_name);
-            coursenumber = v.findViewById(R.id.course_number);
+            public MyViewHolder(View v) {
+                super(v);
+                coursename = v.findViewById(R.id.course_name);
+                coursenumber = v.findViewById(R.id.course_number);
+            }
         }
-    }
 
-
-    public CourseAdapter(List <Course> courses){
-
-        this.courses = courses;
-    }
-
-
+        public CourseAdapter(List <Course> courses){
+            this.courses = courses;
+        }
 
         //Grabs the RecyclerView and it inflates it with the course_layout.
         //The ViewHolder then grabs the ID's of the coursename and the coursenumber
@@ -42,8 +37,6 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
             View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_layout,parent,false);
             return new MyViewHolder(itemView);
         }
-
-
 
         //Populates the ID that was grabbed from the onCreateViewHolder and populates it
         //With the data from the array list
@@ -54,11 +47,9 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
             holder.coursenumber.setText(course.getCourseNumber());
         }
 
-
         @Override
         public int getItemCount(){
             return courses.size();
         }
-
 
     }
