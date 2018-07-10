@@ -3,33 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="16dp"
     android:clickable="true"
+    android:focusable="true"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/course_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:textSize="24sp"
-        android:id="@+id/course_name" />
+        android:textSize="18sp"
+        android:textColor="@android:color/black"/>
 
     <TextView
+        android:id="@+id/course_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:textSize="16sp"
-        android:layout_marginTop="2dp"
-        android:layout_below="@id/course_name"
-        android:id="@+id/course_number"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/course_number"
-        android:background="@android:color/black"/>
+        android:textSize="14sp"
+        android:layout_below="@id/course_name" />
 
 </RelativeLayout>

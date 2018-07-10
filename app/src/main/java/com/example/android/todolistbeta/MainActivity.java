@@ -51,14 +51,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void prepareCourseList() {
-        Course course1 = new Course("CMSC131", "Number of tasks: 3");
+        Course course1 = new Course("CMSC131", "Number of tasks: 6");
         courseList.add(course1);
 
-        Course course2 = new Course("CMSC131", "Number of tasks: 3");
+        Course course2 = new Course("CMSC132", "Number of tasks: 2");
         courseList.add(course2);
 
-        Course course3 = new Course("CMSC131", "Number of tasks: 3");
+        Course course3 = new Course("CMSC216", "Number of tasks: 5");
         courseList.add(course3);
+
+        Course course4 = new Course("CMSC330", "Number of tasks: 1");
+        courseList.add(course4);
+
+        Course course5 = new Course("CMSC250", "Number of tasks: 0");
+        courseList.add(course5);
+
+        Course course6 = new Course("CMSC351", "Number of tasks: 9");
+        courseList.add(course6);
 
         mCourseAdapter.notifyDataSetChanged();
     }
