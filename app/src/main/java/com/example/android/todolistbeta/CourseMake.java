@@ -161,19 +161,18 @@ public class CourseMake extends AppCompatActivity {
             int minute = c.get(Calendar.MINUTE);
 
             //Displays the clock  when someone picks the time
-            return new TimePickerDialog(getActivity(),this,hour, minute,
-                    DateFormat.is24HourFormat(getActivity()));
+            return new TimePickerDialog(getActivity(),this,hour, minute, false);
         }
 
         public void onTimeSet(TimePicker view, int hourOfDay, int minute){
-            String time = hourOfDay + ":" + minute;
+            /*String time = hourOfDay + ":" + minute;
             if(hourOfDay < 12){
                 time = time + " AM";
             }
             else{
                 time = time + " PM";
-            }
-            timeEdit.setText(time);
+            }*/
+            timeEdit.setText(hourOfDay + " :" + minute);
         }
     }
 
