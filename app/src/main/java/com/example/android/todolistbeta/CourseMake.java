@@ -14,10 +14,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Locale;
+
+import static com.example.android.todolistbeta.MainActivity.courseList;
+import static com.example.android.todolistbeta.MainActivity.mCourseAdapter;
 
 
 /**
@@ -128,10 +133,38 @@ public class CourseMake extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkBox.isChecked()) {
-
+                String courseNameEdit = courseName.getText().toString();
+                String taskEdit = task.getText().toString();
+                if (courseNameEdit.matches("")) {
+                    Toast.makeText(getBaseContext(), "Please enter course name!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                finish();
+
+                else if (checkBox.isChecked()) {
+                    if (courseNameEdit.matches("")) {
+                        Toast.makeText(getBaseContext(), "Please enter course name!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    else if(taskEdit.matches("")) {
+                        Toast.makeText(getBaseContext(), "Please enter task description!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    else {
+                        finish();
+                    }
+                }
+                else {
+                    Course newCourse = new Course(courseNameEdit, "Number of Tasks: 99");
+                    courseList.add(newCourse);
+                    mCourseAdapter.notifyDataSetChanged();
+                    finish();
+                }
+                /*else if (!checkBox.isChecked()) {
+
+                }*/
+
             }
         });
 
@@ -165,14 +198,23 @@ public class CourseMake extends AppCompatActivity {
         }
 
         public void onTimeSet(TimePicker view, int hourOfDay, int minute){
-            /*String time = hourOfDay + ":" + minute;
-            if(hourOfDay < 12){
-                time = time + " AM";
+            int h = hourOfDay;
+            int m = minute;
+            String a;
+
+            if (h > 12) {
+                h = h - 12;
+                a = "PM";
+            }  else if (h == 0) {
+                h = 12;
+                a = "AM";
+            }  else if (h == 12) {
+                a = "PM";
+            }  else {
+                a = "AM";
             }
-            else{
-                time = time + " PM";
-            }*/
-            timeEdit.setText(hourOfDay + " :" + minute);
+
+            timeEdit.setText(h + ":" + m + " " + a);
         }
     }
 

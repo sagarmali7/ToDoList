@@ -13,9 +13,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Course> courseList = new ArrayList<>();
+    public static List<Course> courseList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private CourseAdapter mCourseAdapter;
+    public static CourseAdapter mCourseAdapter;
     private FloatingActionButton button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Sets up the adapter with the array list that will hold the courses
         mCourseAdapter = new CourseAdapter(courseList);
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
 
         //Sets up the layout manager
@@ -35,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         //This provides the child view for each section in the recycler view
         recyclerView.setAdapter(mCourseAdapter);
-
-        prepareCourseList();
 
         button = findViewById(R.id.floating_button);
 
@@ -50,25 +47,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void prepareCourseList() {
-        Course course1 = new Course("CMSC131", "Number of tasks: 6");
-        courseList.add(course1);
 
-        Course course2 = new Course("CMSC132", "Number of tasks: 2");
-        courseList.add(course2);
-
-        Course course3 = new Course("CMSC216", "Number of tasks: 5");
-        courseList.add(course3);
-
-        Course course4 = new Course("CMSC330", "Number of tasks: 1");
-        courseList.add(course4);
-
-        Course course5 = new Course("CMSC250", "Number of tasks: 0");
-        courseList.add(course5);
-
-        Course course6 = new Course("CMSC351", "Number of tasks: 9");
-        courseList.add(course6);
-
-        mCourseAdapter.notifyDataSetChanged();
-    }
 }

@@ -20,7 +20,8 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:src = "@mipmap/baseline_add_black_36"
-        android:tint="@color/colorWhile"
+        android:tint="@color/colorWhite"
+        android:backgroundTint="@color/colorFAB"
         android:id="@+id/floating_button">
 
     </android.support.design.widget.FloatingActionButton>
