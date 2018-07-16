@@ -8,10 +8,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by kellyzelaya on 4/9/18.
- */
-
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHolder> {
         private List<Course> courses;
 
@@ -44,7 +40,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
         public void onBindViewHolder(MyViewHolder holder, int position){
             Course course = courses.get(position);
             holder.coursename.setText(course.getCourseName());
-            holder.coursenumber.setText(course.getCourseNumber());
+            holder.coursenumber.setText("Tasks left: " + course.getCourseNumber());
         }
 
         @Override

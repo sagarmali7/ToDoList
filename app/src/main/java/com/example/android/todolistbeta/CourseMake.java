@@ -24,11 +24,6 @@ import java.util.Locale;
 import static com.example.android.todolistbeta.MainActivity.courseList;
 import static com.example.android.todolistbeta.MainActivity.mCourseAdapter;
 
-
-/**
- * Created by kellyzelaya on 4/10/18.
- */
-
 public class CourseMake extends AppCompatActivity {
 
     //FloatingActionButton caldendarButton;
@@ -156,7 +151,7 @@ public class CourseMake extends AppCompatActivity {
                     }
                 }
                 else {
-                    Course newCourse = new Course(courseNameEdit, "Number of Tasks: 99");
+                    Course newCourse = new Course(courseNameEdit, 0);
                     courseList.add(newCourse);
                     mCourseAdapter.notifyDataSetChanged();
                     finish();
